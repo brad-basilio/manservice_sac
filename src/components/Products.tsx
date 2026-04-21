@@ -1,39 +1,40 @@
-import { motion } from 'motion/react';
-import { Section, SectionTitle } from './ui-components';
-import { ArrowRight } from 'lucide-react';
+import { motion } from "motion/react";
+import { Section, SectionTitle } from "./ui-components";
+import { ArrowRight } from "lucide-react";
 
 const products = [
   {
-    title: "GENERADORES DE VAPOR",
+    title: "Generadores de Vapor",
     desc: "Diseño y fabricación de calderas y equipos generadores de vapor cumpliendo estrictamente con la normativa ASME.",
-    image: "https://picsum.photos/seed/caldera-vapor/400/300" // Mock image
+    image: "https://www.manserviceingenieros.com/images/hsg400-min.png",
   },
   {
-    title: "ASESORÍA DE PROYECTOS",
-    desc: "Consultoría especializada para el óptimo desarrollo, dimensionamiento y rendimiento de sistemas de generación.",
-    image: "https://picsum.photos/seed/asesoria-ingenieria/400/300"
+    title: "Reguladoras de Gas",
+    desc: "Reguladoras de gas de alta calidad para equipos térmicos industriales.",
+    image:
+      "https://www.manserviceingenieros.com/images/Belgas%20p2010160300b3f0-min.png",
   },
   {
-    title: "MANTENIMIENTO POST-VENTA",
-    desc: "Servicio preventivo y correctivo para asegurar la máxima durabilidad, seguridad operativa y eficiencia de sus equipos.",
-    image: "https://picsum.photos/seed/mantenimiento-industrial/400/300"
+    title: "Quemadores Duales",
+    desc: "Quemadores duales de alta calidad para equipos térmicos industriales.",
+    image: "https://www.manserviceingenieros.com/images/p_duales.jpg",
   },
   {
-    title: "COMERCIALIZACIÓN",
-    desc: "Venta e instalación de quemadores, reguladoras y repuestos de alta calidad para equipos térmicos industriales.",
-    image: "https://picsum.photos/seed/repuestos-valvulas/400/300"
-  }
+    title: "Repuestos de Productos",
+    desc: "Repuestos de alta calidad para equipos térmicos industriales.",
+    image: "https://www.manserviceingenieros.com/images/img4.jpg",
+  },
 ];
 
 export default function Products() {
   return (
     <Section id="soluciones" className="bg-brand-light-alt">
-      <SectionTitle 
-        title="Nuestras Soluciones Industriales" 
+      <SectionTitle
+        title="Nuestras Soluciones Industriales"
         subtitle="Tecnología de combustión líder y sistemas de regulación diseñados para máxima eficiencia."
       />
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {products.map((product, i) => (
           <motion.div
             key={i}
@@ -41,25 +42,41 @@ export default function Products() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group border border-gray-100 hover:border-brand-secondary/50 flex flex-col h-full"
+            className="bg-white rounded-[2.5rem] overflow-hidden shadow-xl hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.1)] hover:-translate-y-3 transition-all duration-500 group border border-gray-50 flex flex-col h-full"
           >
-            <div className="relative h-48 overflow-hidden">
-              <img 
-                src={product.image} 
-                alt={product.title} 
-                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+            {/* Image Container - Square & Contain */}
+            <div className="relative aspect-square p-10 bg-slate-50/50 flex items-center justify-center group-hover:bg-white transition-colors duration-500">
+              <img
+                src={product.image}
+                alt={product.title}
+                className="w-full h-full aspect-square object-contain transform group-hover:scale-110 transition-transform duration-700"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-brand-primary/20 group-hover:bg-transparent transition-colors duration-300"></div>
+              <div className="absolute top-4 right-4 bg-white/80 backdrop-blur-md p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-sm">
+                <ArrowRight className="w-4 h-4 text-brand-secondary" />
+              </div>
             </div>
-            <div className="p-6 flex flex-col flex-grow">
-              <h3 className="font-heading font-bold text-lg mb-3 tracking-tight text-brand-dark">{product.title}</h3>
-              <p className="text-brand-accent text-sm mb-6 flex-grow">{product.desc}</p>
-              <a 
-                href="#contacto" 
-                className="inline-flex items-center gap-2 text-brand-secondary font-bold text-sm uppercase tracking-wide group/btn w-fit"
+
+            {/* Content Section */}
+            <div className="p-8 flex flex-col flex-grow bg-white relative">
+              <div className="mb-4">
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-secondary/70 block mb-1">
+                  Categoría Industrial
+                </span>
+                <h3 className="font-heading font-black text-2xl leading-tight text-brand-dark group-hover:text-brand-primary transition-colors duration-300">
+                  {product.title}
+                </h3>
+              </div>
+
+              <p className="text-brand-accent text-sm leading-relaxed mb-8 flex-grow font-medium">
+                {product.desc}
+              </p>
+
+              <a
+                href="#contacto"
+                className="inline-flex items-center justify-center gap-3 w-full py-4 bg-brand-light-alt rounded-full text-brand-dark font-black text-xs uppercase tracking-widest group/btn hover:bg-brand-secondary hover:text-white transition-all duration-300 shadow-sm"
               >
-                Información
+                Solicitar Cotización
                 <ArrowRight className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" />
               </a>
             </div>
@@ -67,12 +84,15 @@ export default function Products() {
         ))}
       </div>
 
-      <div className="mt-16 text-center">
-        <a 
-          href="#contacto" 
-          className="inline-flex items-center justify-center bg-white border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white font-bold py-3 px-8 rounded-full transition-colors shadow-lg"
+      <div className="mt-20 text-center">
+        <a
+          href="#contacto"
+          className="group relative inline-flex items-center justify-center px-10 py-4 font-black text-white transition-all duration-300 bg-brand-primary rounded-full hover:bg-brand-dark shadow-xl hover:shadow-brand-primary/20 active:scale-95"
         >
-          VER CATÁLOGO COMPLETO
+          <span className="relative z-10 flex items-center gap-2">
+            EXPLORAR CATÁLOGO COMPLETO
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </span>
         </a>
       </div>
     </Section>
