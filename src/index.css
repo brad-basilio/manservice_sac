@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #4367b5;
+  --color-brand-secondary: #d9272a;
+  --color-brand-accent: #4A5F7A;
+  --color-brand-light: #F8F9FA;
+  --color-brand-light-alt: #E9ECEF;
+  --color-brand-dark: #2C3E50;
+  
+  --font-heading: "Montserrat", sans-serif;
+  --font-sans: "Open Sans", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply font-sans text-brand-dark bg-brand-light;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-brand-dark;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
